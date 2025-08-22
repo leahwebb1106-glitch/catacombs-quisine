@@ -1,0 +1,158 @@
+catacombs-cuisine/
+│
+├── public/
+│   ├── index.html
+│   └── favicon.ico
+│
+├── src/
+│   ├── components/
+│   │   ├── Header.jsx
+│   │   ├── Footer.jsx
+│   │   └── InteractiveGuide.jsx
+│   ├── App.jsx
+│   ├── index.js
+│   └── App.css
+│
+├── package.json
+├── vite.config.js
+└── README.md
+
+{
+  "name": "catacombs-cuisine",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.0.0",
+    "vite": "^4.0.0"
+  }
+}
+
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+
+export default defineConfig({
+  plugins: [react()]
+})
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Catacombs Cuisine</title>
+</head>
+<body>
+  <div id="root"></div>
+</body>
+</html>
+
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import App from './App.jsx'
+import './App.css'
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />)
+
+import React from 'react'
+import Header from './components/Header'
+import Footer from './components/Footer'
+import InteractiveGuide from './components/InteractiveGuide'
+
+export default function App() {
+  return (
+    <div>
+      <Header />
+      <main style={{ padding: '20px' }}>
+        <InteractiveGuide />
+      </main>
+      <Footer />
+    </div>
+  )
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background: #111;
+  color: #eee;
+  margin: 0;
+  padding: 0;
+}
+
+header, footer {
+  background: #222;
+  text-align: center;
+  padding: 10px;
+}
+
+button {
+  background: #f76c6c;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  margin-top: 10px;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+button:hover {
+  background: #ff8585;
+}
+
+import React from 'react'
+
+export default function Header() {
+  return (
+    <header>
+      <h1>Catacombs Cuisine</h1>
+      <p>The Mock Guide for Bold Adventurers</p>
+    </header>
+  )
+}
+
+import React from 'react'
+
+export default function Footer() {
+  return (
+    <footer>
+      <p>&copy; 2025 Catacombs Cuisine. Eat at your own risk!</p>
+    </footer>
+  )
+}
+
+import React, { useState } from 'react'
+
+export default function InteractiveGuide() {
+  const [licked, setLicked] = useState(false)
+
+  return (
+    <div style={{ textAlign: 'center' }}>
+      <h2>Step 1: Choose Your Bone</h2>
+      <p>Hover over the options and pick your favorite flavor of history.</p>
+      <button onClick={() => setLicked(true)}>
+        {licked ? "You've tasted eternity!" : "Lick the Bone"}
+      </button>
+      {licked && <p style={{ color: '#4caf50', marginTop: '15px' }}>Congrats, you’re now part of history! 🦴</p>}
+    </div>
+  )
+}
+
+# Catacombs Cuisine
+A mock interactive guide for bold adventurers exploring the Paris Catacombs.
+
+### Features
+- Interactive "lick the bone" button
+- Fun, spooky aesthetic
+- Deploy-ready React app using Vite
+
+### Deploy to Netlify
+Click below to deploy:
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=YOUR_REPO_URL)
